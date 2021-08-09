@@ -22,7 +22,6 @@ class CategoryTest extends TestCase
 
     public function test_categories_api_post_success()
     {
-        $this->withoutExceptionHandling();
         $response = $this->postJson('/api/categories', ['name' => 'New category', 'parent_id' => 1]);
         $response->assertStatus(200);
     }
