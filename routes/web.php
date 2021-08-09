@@ -11,9 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('locations', 'LocationController@index');
 Route::get('items', 'ItemController@index');
+Route::get('categories', 'CategoryController@index');

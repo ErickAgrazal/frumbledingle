@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('page_title')
-    Locations
+    Categories
 @endsection
 
 @section('content')
-    <locations-table></locations-table>
+    <categories-table></categories-table>
 @endsection

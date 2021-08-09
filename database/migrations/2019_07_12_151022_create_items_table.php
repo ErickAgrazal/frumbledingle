@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('name');
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 10, 2);  // Not showed in the requirement, but I'm leaving it because the same requirement, mentioned that the migration was already created.
             $table->integer('location_id');
             $table->integer('category_id');
         });
