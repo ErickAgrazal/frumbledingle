@@ -59,5 +59,10 @@ Example:
 |Plupbuckle, Inc.|Cars|Nissan|2|
 |Plupbuckle, Inc.|Purses|Louis Vuitton|1|
 
+## Solution
 
-
+Run the application by executing:
+1. `docker-compose up --build -d  # To start the whole infrastructure`
+1. `php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`
+1. `npm run dev # To compile the vue components`
+1. `php artisan serve # To start the laravel server`.
