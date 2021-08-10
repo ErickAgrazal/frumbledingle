@@ -65,6 +65,7 @@ services:
       - DB_DATABASE=local
       - DB_USERNAME=root
       - DB_PASSWORD=root
+      - APP_ENV=local
       - APP_DEBUG=true
       - APP_LOG_LEVEL=debug
     depends_on:
@@ -76,15 +77,12 @@ services:
       - "3000:3000"
     volumes:
       - ./:/app
-  
+
   npm:
     image: node:13.7
     container_name: npm
     volumes:
       - .:/var/www/html
-    ports:
-      - 3000:3000
-      - 3001:3001
     working_dir: /var/www/html
     entrypoint: ['npm']
 
