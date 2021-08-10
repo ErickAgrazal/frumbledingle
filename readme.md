@@ -63,6 +63,4 @@ Example:
 
 Run the application by executing:
 1. `docker-compose up --build -d  # To start the whole infrastructure`
-1. `php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`
-1. `npm run dev # To compile the vue components`
-1. `php artisan serve # To start the laravel server`.
+1. `docker-compose exec laravel php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`

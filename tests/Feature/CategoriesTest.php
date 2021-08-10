@@ -6,14 +6,17 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Artisan;
 
 class CategoryTest extends TestCase
 {
-    /**
-     * Tests categories page loads
-     *
-     * @return void
-     */
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+        Artisan::call('db:seed', ['--class' => 'DatabaseSeeder ', '--database' => 'testing']);
+    }
+
     public function test_categories_page_loads()
     {
         $response = $this->get('/categories');
@@ -24,5 +27,11 @@ class CategoryTest extends TestCase
     {
         $response = $this->postJson('/api/categories', ['name' => 'New category', 'parent_id' => 1]);
         $response->assertStatus(200);
+    }
+
+    public function tearDown()
+    {
+        Artisan::call('migrate:reset');
+        parent::tearDown();
     }
 }

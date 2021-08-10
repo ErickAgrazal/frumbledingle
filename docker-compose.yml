@@ -1,17 +1,17 @@
-version: '2.3'
+version: '3'
 
 services:
-  mysql:
+  mariadb:
     restart: always
     image: mariadb:10.3
     container_name: mariadb
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data/:/var/lib/mysql
+      - mariadb-data/:/var/lib/mysql
     mem_limit: 512m
     networks:
-      - mysqlnetwork
+      - mariadb-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=local
@@ -31,9 +31,9 @@ services:
       - "8001:80"
     mem_limit: 512m
     networks:
-      - mysqlnetwork
+      - mariadb-network
     depends_on:
-      - mysql
+      - mariadb
     environment:
       - PMA_HOST=mysql
       - PMA_PORT=3306
@@ -53,13 +53,34 @@ services:
       - redis-data:/data
     mem_limit: 96m
     networks:
-      - mysqlnetwork
+      - mariadb-network
+
+  laravel:
+    tty: true
+    container_name: laravel
+    image: docker.io/bitnami/laravel:8
+    environment:
+      - DB_PORT=3306
+      - DB_HOST=mariadb
+      - DB_DATABASE=local
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    depends_on:
+      - mariadb
+      - redis-server
+    networks:
+      - mariadb-network
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+
 volumes:
-  mysql-data:
+  mariadb-data:
     driver: local
   redis-data:
     driver: local
 
 networks:
-  mysqlnetwork:
+  mariadb-network:
     driver: bridge
