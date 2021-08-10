@@ -1,1 +1,1 @@
-docker exec -it laravel php artisan migrate:refresh --seed
+docker-compose run --rm laravel php artisan migrate:refresh --seed

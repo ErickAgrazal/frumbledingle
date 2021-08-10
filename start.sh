@@ -1,15 +1,7 @@
-NODE_MODULES="./node_modules"
-
-if [ -d $NODE_MODULES ] 
-then 
-    echo "Node modules already exists."
-else
-    echo "Install dependencies if they were not installed"
-    npm install
+if [ ! -f ".env" ]; then
+    cp ".env.example" ".env"
 fi
-
-# Generate assets
-npm run dev
-
-# Execute infrastructure docker
-docker-compose up --build --remove-orphans
+docker-compose run --rm npm install
+docker-compose run --rm npm run dev
+docker-compose run --rm laravel php artisan key:generate
+docker-compose up --build laravel
