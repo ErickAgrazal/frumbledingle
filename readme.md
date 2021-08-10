@@ -63,7 +63,7 @@ Example:
 
 ### Execute:
 1. `./start.sh` or `docker-compose up -d # If you do not have access to shell scripts`
-1. `./reset_database.sh` or `docker-compose exec laravel php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`
+1. `./reset_database.sh` or `docker exec laravel php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`
 
 ### Tests:
 1. `docker-compose -f docker-compose.test.yml up -d`
