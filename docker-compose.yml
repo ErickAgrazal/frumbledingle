@@ -76,6 +76,17 @@ services:
       - "3000:3000"
     volumes:
       - ./:/app
+  
+  npm:
+    image: node:13.7
+    container_name: npm
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 3000:3000
+      - 3001:3001
+    working_dir: /var/www/html
+    entrypoint: ['npm']
 
 volumes:
   mariadb-data:
