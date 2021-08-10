@@ -61,6 +61,10 @@ Example:
 
 ## Solution
 
-Run the application by executing:
-1. `docker-compose up --build -d  # To start the whole infrastructure`
+### Execute:
+1. `docker-compose up -d  # To start the whole infrastructure`
 1. `docker-compose exec laravel php artisan migrate:refresh --seed  # To seed apply the migrations and seed the tables of the DB`
+
+### Tests:
+1. `docker-compose -f docker-compose.test.yml up -d`
+1. `docker exec -it laravel ./vendor/phpunit/phpunit/phpunit --testsuite Feature Tests`
