@@ -62,9 +62,8 @@ Example:
 ## Solution
 
 ### Execute:
-1. `./start.sh` or `docker-compose up -d # If you do not have access to shell scripts`
-1. After you see that the development server has started, you can do: `./reset_database.sh` or `docker exec laravel php artisan migrate:refresh --seed  # If you do not have access to shell scripts`
+1. `./execute.startserver.sh`
+1. After you see that the development server has started, you can do: `./execute.resetdb.sh`
 
 ### Tests:
-1. `docker-compose -f docker-compose.test.yml up -d`
-1. `docker exec -it laravel ./vendor/phpunit/phpunit/phpunit --testsuite Feature Tests`
+1. `./execute.testing.sh`

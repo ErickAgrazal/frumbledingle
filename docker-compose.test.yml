@@ -17,13 +17,17 @@ services:
     tty: true
     container_name: laravel
     image: docker.io/bitnami/laravel:8
-    environment:
-      - DB_PORT=3306
-      - DB_HOST=mariadb
-      - DB_DATABASE=testing
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
+    env_file:
+      - .env.testing
     depends_on:
       - mariadb
     volumes:
       - ./:/app
+      - .env.testing:/app/.env
+  npm:
+    image: node:13.7
+    container_name: npm
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['npm']
