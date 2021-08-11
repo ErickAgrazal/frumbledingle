@@ -18,7 +18,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
       - PMA_ARBITRARY=1
-      - PMA_HOST=mysql
+      - PMA_HOST=mariadb
       - PMA_PORT=3306
       - PMA_USER=root
       - PMA_PASSWORD=root
@@ -35,7 +35,7 @@ services:
     depends_on:
       - mariadb
     environment:
-      - PMA_HOST=mysql
+      - PMA_HOST=mariadb
       - PMA_PORT=3306
       - PMA_USER=root
       - PMA_PASSWORD=root
